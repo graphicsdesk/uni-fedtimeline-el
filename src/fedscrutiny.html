@@ -8,15 +8,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 	<meta name="description" content="Scrollama: Sticky Side Example" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="../style.css" />
 	<style>
 		
-		html, body {
-    margin: 0;
-    padding-top: 80px;
-    height: 100%;
-	width: 1200px;
-}
 
 /* The page container that scales */
 		#scale-wrapper {
@@ -44,22 +37,6 @@
     		flex-direction: column;     /* stack image and caption */
     		justify-content: center;    /* centers the pair vertically */
     		align-items: center;
-		}
-
-		#masthead {
-    		padding: 0 2rem;              /* space from the left/right edges */
-    		box-sizing: border-box;
-    		font-family: "Roboto", sans-serif;
-		}
-
-		#masthead h1 {
-    		font-family: "Roboto", sans-serif;
-    		font-weight: 700;
-		}
-
-		#masthead p {
-    		font-family: "Roboto", sans-serif;
-    		font-weight: 300;
 		}
 
 		article {
@@ -197,6 +174,11 @@
     		font-family: "Roboto", sans-serif;
     		font-size: 12pt;
     		display: none;
+
+		#scrolly .step,
+		#scrolly .step p {
+    		color: #fff !important;
+}
 		}
 
 		/* ---------------------------------------------------------
@@ -234,14 +216,6 @@
    TABLET: 601px - 1199px (side by side, scaled)
 --------------------------------------------------------- */
 @media (max-width: 1199px) {
-    html, body {
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    body { padding-top: 40px; }
-
-    #masthead { padding: 0 1.5rem; }
 
     article {
         flex: 0 0 42%;
@@ -268,12 +242,7 @@
    PHONE: 600px and under (photo pinned on top, text below)
 --------------------------------------------------------- */
 @media (max-width: 600px) {
-    body { padding-top: 16px; }
-
-    #masthead { padding: 0 1rem; }
-    #masthead h1 { font-size: 1.6rem; line-height: 1.2; }
-    #masthead p  { font-size: 1rem; }
-
+   
     #scrolly { padding: 0.5rem; }
 
     /* leave room at the top of the text for the pinned photo */
@@ -312,7 +281,7 @@
     .fig-count  { font-size: 9pt; bottom: 28px; }
     .fig-credit { font-size: 8pt; }
 
-    #outro { height: 40vh; }   /* lets the last box scroll up */
+	#scrolly { padding-bottom: 100vh; }
 }
 
 	</style>
@@ -551,7 +520,6 @@
 			</figure>
 		</section>
 
-		<section id="outro"></section>
 	</main>
 
 <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
@@ -571,22 +539,28 @@
 	var phoneQuery = window.matchMedia("(max-width: 600px)");
 
 function positionFigure() {
-    var header = document.getElementById("masthead");
-    var headerBottom = Math.max(header.getBoundingClientRect().bottom, 0);
+    var rect = scrolly.node().getBoundingClientRect();
     var gap = phoneQuery.matches ? 8 : 16;
-    var top = headerBottom + gap;
+    var top = Math.max(rect.top, 0) + gap;
     var h = phoneQuery.matches
         ? Math.round(window.innerHeight * 0.38)    /* must match the 38vh in the CSS */
         : window.innerHeight - top - gap;
 
+    /* as the bottom of the timeline arrives, slide the photo up with it */
+    var overflow = top + h + gap - rect.bottom;
+    if (overflow > 0) top -= overflow;
+
+    var visible = rect.bottom > 0 && rect.top < window.innerHeight;
+
     figure
+        .style("visibility", visible ? "visible" : "hidden")
         .style("top", top + "px")
         .style("transform", "none")
         .style("margin-top", "0px")
         .style("margin-bottom", "0px")
         .style("height", Math.max(h, 100) + "px");
 }
-	
+
 	function handleResize() {
     	step.style("height", "auto");
     	positionFigure();
@@ -669,6 +643,10 @@ function handleStepEnter(response) {
 	window.addEventListener("resize", function () { scalePage(); handleResize(); });
 	window.addEventListener("load", scalePage);
 	window.addEventListener("scroll", positionFigure)
+
+	scrolly.selectAll(".step, .step p").each(function () {
+    	this.style.setProperty("color", "#fff", "important");
+	});
 
 	init();
 </script>
