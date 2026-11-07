@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Scrollama: Sticky Side Example</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<meta name="description" content="Scrollama: Sticky Side Example" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="../style.css" />
+	<style>
+		
+		html, body {
+    margin: 0;
+    padding-top: 80px;
+    height: 100%;
+	width: 1200px;
+}
+
+/* The page container that scales */
+		#scale-wrapper {
+    		transform-origin: top center;
+			position: relative;
+		}
+		
+		#scrolly {
+			padding-top: 5rem;
+			position: relative;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			background-color: #ffffff;
+			padding: 1rem;
+		}
+
+		#scrolly>* {
+			display: flex;
+    		justify-content: center;
+    		align-items: flex-start;
+		}
+		
+		#scrolly > figure {
+    		flex-direction: column;     /* stack image and caption */
+    		justify-content: center;    /* centers the pair vertically */
+    		align-items: center;
+		}
+
+		#masthead {
+    		padding: 0 2rem;              /* space from the left/right edges */
+    		box-sizing: border-box;
+    		font-family: "Roboto", sans-serif;
+		}
+
+		#masthead h1 {
+    		font-family: "Roboto", sans-serif;
+    		font-weight: 700;
+		}
+
+		#masthead p {
+    		font-family: "Roboto", sans-serif;
+    		font-weight: 300;
+		}
+
+		article {
+			position: relative;
+			padding: 0 1rem;
+			max-width: 20rem;
+		}
+
+		figure {
+  			margin: 2rem;
+			position: fixed;       /* Fixes it on the screen */
+    top: 50%;              /* Vertically center */
+	left: 28%;           /* Distance from the right edge */
+    transform: translateY(-50%); /* Proper vertical centering */
+    width: 500px;          /* Adjust width as needed */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;    
+		}
+
+		figure img {
+  			max-width: 100%;
+    max-height: calc(100% - 30px);
+    object-fit: contain;
+    opacity: 0;
+    position: absolute;
+		}
+
+		.fig-credit {
+			flex-shrink: 0;
+			width: 100%;
+			margin-top: 6px;
+    		text-align: center;           /* use "left" or "right" if you prefer */
+    		font-family: "Roboto", sans-serif;
+    		font-weight: 300;
+    		font-size: 10pt;
+    		color: #555;
+    		display: none;
+		}
+
+		figure img.active {
+  			opacity: 1;
+  			position: relative;
+  			z-index: 2;
+		}
+		.step-container {
+    		position: relative;
+		}
+
+		.step-container::before {
+    		content: "";
+    		position: absolute;
+    		top: 0;
+    		bottom: 0;
+    		left: calc(50% + 100px);   /* 100px matches the .step margin-left */
+    		width: 3px;
+    		background: #000;
+    		transform: translateX(-50%);
+    		z-index: 0;
+		}
+
+		.step {
+    		position: relative;
+    		z-index: 1;
+		}
+
+		.step {
+			display: flex;
+  			flex-direction: column;
+  			align-items: center; /* optional; keeps each step centered */
+  			width: 100%;
+			margin-bottom: 8rem; /* adds 4rem of left margin */
+			border-radius: 15px;
+			background-color: #083A90;
+			color: #fff;
+		}
+
+		.step.is-red {
+    		background-color: #d62828;   /* red from step 13 on */
+		}
+
+		.step:last-child {
+			margin-bottom: 0;
+		}
+
+		/* steps 13 through 31 are red; everything else uses the default blue */
+		.step:nth-child(n+13):nth-child(-n+31) {
+    		background-color: #d62828;
+		}
+
+		.step p {
+			text-align: center;
+			padding-left: 1rem;
+			padding-right: 1rem;
+			padding-top: 4rem;
+			padding-bottom: 4rem;
+			font-size: 14pt;
+			font-family: "Roboto";
+		}
+
+		.fig-arrow {
+    		position: absolute;
+    		top: 50%;
+    		transform: translateY(-50%);
+    		z-index: 20;
+    		width: 40px;
+    		height: 40px;
+    		border: none;
+    		border-radius: 50%;
+    		background: rgba(0, 0, 0, 0.55);
+    		color: #fff;
+    		font-size: 28px;
+    		line-height: 1;
+    		cursor: pointer;
+    		display: none;               /* JS shows it only when a step has 2+ images */
+    		align-items: center;
+    		justify-content: center;
+		}
+		.fig-arrow:hover { background: rgba(0, 0, 0, 0.8); }
+		.fig-arrow.prev { left: 8px; }
+		.fig-arrow.next { right: 8px; }
+
+		.fig-count {
+    		position: absolute;
+    		bottom: 8px;
+    		left: 50%;
+    		transform: translateX(-50%);
+    		z-index: 20;
+    		padding: 2px 10px;
+    		border-radius: 12px;
+    		background: rgba(0, 0, 0, 0.55);
+    		color: #fff;
+    		font-family: "Roboto", sans-serif;
+    		font-size: 12pt;
+    		display: none;
+		}
+
+		/* ---------------------------------------------------------
+   DESKTOP: 1200px down to 600px
+--------------------------------------------------------- */
+
+@media (min-width: 1200px) {
+
+
+    article {
+        max-width: 20rem;
+        margin: 0;
+    }
+
+    .step {
+        margin-left: 100px;
+    }
+
+	figure {
+		transform: translateY(-50%);
+		margin-left: 17rem;
+	}
+
+	figure img {
+		max-width: 100%;
+	}
+
+    #center-image {
+        left: 43%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* ---------------------------------------------------------
+   TABLET: 601px - 1199px (side by side, scaled)
+--------------------------------------------------------- */
+@media (max-width: 1199px) {
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    body { padding-top: 40px; }
+
+    #masthead { padding: 0 1.5rem; }
+
+    article {
+        flex: 0 0 42%;
+        max-width: none;
+        margin: 0;
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+
+    .step-container { width: 100%; }
+
+    .step { margin-left: 0; }
+
+    .step-container::before { left: 50%; }
+
+    #scrolly > figure {
+        left: 46%;
+        width: 50%;
+        margin: 0;
+    }
+}
+
+/* ---------------------------------------------------------
+   PHONE: 600px and under (photo pinned on top, text below)
+--------------------------------------------------------- */
+@media (max-width: 600px) {
+    body { padding-top: 16px; }
+
+    #masthead { padding: 0 1rem; }
+    #masthead h1 { font-size: 1.6rem; line-height: 1.2; }
+    #masthead p  { font-size: 1rem; }
+
+    #scrolly { padding: 0.5rem; }
+
+    /* leave room at the top of the text for the pinned photo */
+    article {
+        flex: 1 1 100%;
+        width: 100%;
+        padding: calc(38vh + 24px) 0 0;
+    }
+
+    .step { margin-bottom: 4rem; }
+
+    .step p {
+        font-size: 11.5pt;
+        padding: 1.5rem 1rem;
+    }
+
+    .step-container::before { width: 2px; }
+
+    #scrolly > figure {
+        left: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0 1rem;
+        box-sizing: border-box;
+        background: #fff;      /* hides text scrolling underneath */
+    }
+
+    .fig-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 22px;
+    }
+    .fig-arrow.prev { left: 12px; }
+    .fig-arrow.next { right: 12px; }
+
+    .fig-count  { font-size: 9pt; bottom: 28px; }
+    .fig-credit { font-size: 8pt; }
+
+    #outro { height: 40vh; }   /* lets the last box scroll up */
+}
+
+	</style>
+</head>
+
+<body>
+
+	<header id="masthead">
+		<h1>Three years of federal scrutiny on Columbia</h1>
+		<p>Along with oversight from the White House, Congress has maintained its grip on the University.</p>
+	</header>	
+	
+	<main>
+		
+	
+		<section id="scrolly">
+			<article>
+			<div class="step-container">
+				<div class="step" data-step="1">
+					<p>Oct. 4, 2023: Minouche Shafik is inaugurated on Low Steps as Columbia’s 20th president.</p>
+				</div>
+				<div class="step" data-step="2">
+					<p>Oct. 7, 2023: Hamas attacks Israel.</p>
+				</div>
+				<div class="step" data-step="3">
+					<p>Oct. 12, 2023: Dueling pro-Israel and pro-Palestinian protests take place on Butler lawns, the first of many campus demonstrations over the war in Gaza that Columbia would see throughout the academic year.</p>
+				</div>
+				<div class="step" data-step="4">
+					<p>Feb. 12, 2024: Following months of protests, the House Committee on Education and the Workforce launches its investigation into antisemitism at Columbia due to “its failure to protect Jewish students.” It requested “all reports of antisemitic acts or incidents and related documents and communications since January 1, 2021.”</p>
+				</div>
+				<div class="step" data-step="5">
+					<p>April 17, 2024: Hundreds of pro-Palestinian protesters pitch the “Gaza Solidarity Encampment,” on east side of South Lawn, hours before Shafik’s testimony on Capitol Hill, where lawmakers criticized her handling of antisemitic incidents on campus.</p>
+				</div>
+				<div class="step" data-step="6">
+					<p>April 18, 2024: Shafik authorizes the New York Police Department to sweep the “Gaza Solidarity Encampment,” arresting over 100 individuals. Students would later repitch the encampment on the west side of South Lawn. In a statement, then-committee chair Rep. Virginia Foxx (R-N.C.) said she was “glad” Shafik called the NYPD to “clear this radical, unauthorized encampment.”</p>
+				</div>
+				<div class="step" data-step="7">
+					<p>April 24, 2024: Two days after Democratic lawmakers visited the Kraft Center for Jewish Student Life, House Speaker Mike Johnson (R-La.) became the highest ranking federal official to visit Columbia during the encampment. Holding a press conference alongside Foxx and three other Republicans, Johnson called for Shafik’s resignation.</p>
+				</div>
+				<div class="step" data-step="8">
+					<p>April 30, 2024: Just after midnight, after negotiations reached an impasse, dozens of pro-Palestinian protesters occupied Hamilton Hall. The NYPD would sweep the building at around 9:30 p.m., arresting over 100 protesters.</p>
+				</div>
+				<div class="step" data-step="9">
+					<p>June 3, 2024: The leaders of six House committees sent letters to Barnard and Columbia administrators, announcing a “Congress-wide probe” into how the institutions have dealt with on-campus antisemitism and their access to federal funding.</p>
+				</div>
+				<div class="step" data-step="10">
+					<p>Aug, 14, 2024: Shafik resigned from the presidency, becoming Columbia’s shortest tenured president since 1801. Katrina Armstrong, then-CEO of Columbia University Irving Medical Center, was tapped to serve as Columbia’s interim president.</p>
+				</div>
+				<div class="step" data-step="11">
+					<p>Aug. 22, 2024: The chairs of the House ways and means and education and the workforce committees sent letters to Barnard and Columbia requesting information on policies developed “to prepare for unauthorized encampments” and disciplinary proceedings for violations of campus rules.</p>
+				</div>
+				<div class="step" data-step="12">
+					<p>Oct. 31, 2024: The House Committee on Education and the Workforce published a 325-page report of communications and records and found that Columbia’s leaders “offered greater concessions to encampment organizers than they publicly acknowledged” and “expressed contempt” for congressional oversight.</p>
+				</div>
+				<div class="step" data-step="13">
+					<p>Nov. 5, 2024: Donald Trump wins the 2024 election, beating then-Vice President Kamala Harris and capping off an unprecedented political comeback.</p>
+				</div>
+				<div class="step" data-step="14">
+					<p>Dec. 18, 2024: Six Republican-led House committees and Speaker Mike Johnson (R-La.) released a report on their investigations into antisemitism in postsecondary education. The report wrote Columbia “stands out for its egregious failure to combat antisemitism on its campus” and warned that universities that violate antidiscrimination laws could lose federal funding.</p>
+				</div>
+				<div class="step" data-step="15">
+					<p>Jan. 20, 2025: Trump is sworn in as the 47th president. Hours after his ceremony, he signs an executive order curtailing diversity, equity, and inclusion initiatives—one of many executive orders that scrutinize higher education.</p>
+				</div>
+				<div class="step" data-step="16">
+					<p>March 7, 2025: The Trump administration slashed $400 million in federal funding to Columbia due to the University’s “continued inaction in the face of persistent harassment of Jewish students.” As part of the funding cut, $250 million in funding from the National Institutes of Health was canceled.</p>
+				</div>
+				<div class="step" data-step="17">
+					<p>March 8, 2025: Immigration and Customs Enforcement agents detained Mahmoud Khalil, SIPA ’24, at his University-owned residence. Court documents would later reveal that Secretary of State Marco Rubio used a rarely cited provision of the Immigration and Nationality Act to justify Khalil’s detainment.</p>
+				</div>
+				<div class="step" data-step="18">
+					<p>March 13, 2025: The federal government sent a list of nine demands to Armstrong to begin negotiations to restore the canceled funding. The demands included placing the Middle Eastern, South Asian, and African studies department under academic receivership, the implementation of a partial mask ban, and granting Public Safety officers “full law enforcement authority, including arrest and removal of agitators.”</p>
+				</div>
+				<div class="step" data-step="19">
+					<p>March 21, 2025: Columbia announced it would partially comply with the demands laid out by the federal government in its March 13 letter, banning some masks on campus, hiring 36 “special officers who will have the ability to remove individuals from campus and/or arrest them,” and placing the Middle Eastern, South Asian, and African studies department and the Center for Palestine Studies under the purview of a senior vice provost.</p>
+				</div>
+				<div class="step" data-step="20">
+					<p>March 28, 2025: Amid criticism of Columbia’s compliance with the federal government’s demands, Katrina Armstrong resigned from office. Claire Shipman, CC ’86, SIPA ’94, assumed the role of acting University president.</p>
+				</div>
+				<div class="step" data-step="21">
+					<p>April 14, 2025: ICE agents detained Mohsen Mahdawi, GS ’25, SIPA ’27, at his naturalization interview appointment in Vermont. He was released April 30, 2025.</p>
+				</div>
+				<div class="step" data-step="22">
+					<p>May 22, 2025: The Department of Health and Human Services’ Office for Civil Rights found Columbia to be in violation of Title VI due to the University “acting with deliberate indifference” toward on-campus antisemitism since Oct. 7, 2023.</p>
+				</div>
+				<div class="step" data-step="23">
+					<p>June 4, 2025: The Department of Education announced that Columbia failed to meet accreditation standards because the University “is in violation of federal antidiscrimination laws.” Columbia’s accreditor, the Middle States Commission on Higher Education, would reaffirm the University’s accreditation in March 2026.</p>
+				</div>
+				<div class="step" data-step="24">
+					<p>July 23, 2025: Following months of negotiations, Columbia signed a $221 million deal with the federal government. As part of the deal, Columbia saw the reimbursement of “a vast majority” of its canceled federal funding.</p>
+				</div>
+				<div class="step" data-step="25">
+					<p>Nov. 4, 2025: The House Select Committee on the Chinese Communist Party called on Columbia to discontinue exchange programs connected to the CCP and review foreign funding for student groups.</p>
+				</div>
+				<div class="step" data-step="26">
+					<p>Jan. 14, 2026: In a letter, the House Judiciary Committee revealed that convicted sex offender Jeffrey Epstein paid for multiple survivors’ tuition at Columbia. The committee gave Columbia two weeks to turn over records that detailed the University’s connections to Epstein.</p>
+				</div>
+				<div class="step" data-step="27">
+					<p>Jan. 22: Sen. Bill Cassidy (R-La.), chair of the Senate Committee on Health, Education, Labor, and Pensions, asked Columbia to turn over incoming first-year students’ math course placement scores.</p>
+				</div>
+				<div class="step" data-step="28">
+					<p>Feb. 26, 2026: ICE agents detained Elmina Aghayeva, GS ’26, at her University-owned residence. After lobbying by Mayor Zohran Mamdani, including an in-person conversation with Trump at the White House, she was released that evening.</p>
+				</div>
+				<div class="step" data-step="29">
+					<p>March 24, 2026: The House Committee on Energy and Commerce opened an investigation into antisemitism at Columbia, including the medical center and the Vagelos College of Physicians and Surgeons.</p>
+				</div>
+				<div class="step" data-step="30">
+					<p>April 1, 2026: Columbia released its first semiannual report detailing its progress on complying with the deal’s provisions. The report found that Columbia had complied with nearly all of the deal’s provisions and announced that the University would require “student attestations” to abide by commitments to civil inquiry and that administrators would be appointed to oversee academic programming and the “wellbeing of Jewish students.” It was the first benchmark of several to come in the University’s remaining two years of compliance with the deal.</p>
+				</div>
+				<div class="step" data-step="31">
+					<p>Oct. 1, 2026: In its second semiannual report, Columbia reported its ongoing compliance with the deal, touting a new all-student training and moves to diversify the faculty makeup.</p>
+				</div>
+				<div class="step" data-step="32">
+					<p>Nov. 3, 2026: Voters flocked to the polls and propelled Democrats to power in both chambers of Congress, setting the stage for a turbulent final two years of the Trump presidency.</p>
+				</div>
+			
+			</div>
+			</article>
+
+			
+			<figure>
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/J6G5XXLOQBFALAJEI4WF7WVYCI.jpg" alt="oct42023" class="fig-img" data-step="1" data-credit="Gabriella Gregor Splaver / Senior Staff Photographer">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/D5LUCIB2UFFBNLKBKZARTZCWZM.jpg" alt="oct72023" class="fig-img" data-step="2" data-credit="Courtesy of Jewish Caucus of Columbia Democrats">
+
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/7OB73NVXLBCMNNPYMZNOQDXGII.jpg" alt="oct122023" class="fig-img" data-step="3" data-credit="Sydney Lee / Senior Staff Photographer">
+
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/6ZTVVGE7OJBYJKXCLCIZ4BOI7I.jpg" alt="feb122024" class="fig-img" data-step="4">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/QDHTXU3D6ZCCXOONZE34WHXOEU.jpg" alt="feb122024" class="fig-img" data-step="4">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/IXMXBSIHCJGJ7B2QZ476MFJMCM.jpg" alt="feb122024" class="fig-img" data-step="4">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/QRHZJE67QBD4NLNBBUPZGXP5LU.jpg" alt="feb122024" class="fig-img" data-step="4">
+								
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/FXUKWITCQVAA5FWMBLMED7WD2M.jpg" alt="april172024" class="fig-img" data-step="5" data-credit="Gabriella Gregor Splaver / Senior Staff Photographer">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/W5VFURDUDFDCVM6DWH23FTF6FE.jpg" alt="april182024" class="fig-img" data-step="6" data-credit="Jessica Samudio / Columbia Daily Spectaotr">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/X7SW6K5OAZBBHDXE5OP7X53Z6E.jpg" alt="april242024" class="fig-img" data-step="7" data-credit="Gabriella Gregor Splaver / Senior Staff Photographer">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/74JZUZWEFBFALOVPAHHG7AKOFU.jpg" alt="april302024" class="fig-img" data-step="8" data-credit="Gabriella Gregor Splaver / Senior Staff Photographer">
+
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/4OLRWMAHNVFXRCMRAH3GJX4RCM.jpg" alt="june32024" class="fig-img" data-step="9">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/2CM6PQ2M6VDILBQ7GMPXAHZU3Y.jpg" alt="june32024" class="fig-img" data-step="9">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/EJL34F4QWRBGNATLLUZYHM3NKI.jpg" alt="june32024" class="fig-img" data-step="9">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/BLBOREAM4FHTFAPMXYPTFPK4W4.jpg" alt="june32024" class="fig-img" data-step="9">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/2XTBVSXZ6BGABNFB35GR66OOPI.jpg" alt="june32024" class="fig-img" data-step="9">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/T5JYESFOLZCWRN3P7XM6XNQCPM.jpg" alt="june32024" class="fig-img" data-step="9">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/662FXEROJND6ZMPZ6HBZFEWQGE.jpg" alt="aug132024" class="fig-img" data-step="10" data-credit="Pippa Tsuki Carlson / Senior Staff Photographer">
+
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/OAAC4PX4GBBHPFNI5QCYZ5PHZQ.jpg" alt="aug222024" class="fig-img" data-step="11">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/ZQSGLJVU4JGFLCH67MRKP2NO7A.jpg" alt="aug222024" class="fig-img" data-step="11">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/DHTG4QYHRJHYXKISBQIVZJUE7M.jpg" alt="aug222024" class="fig-img" data-step="11">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/6MUQPP4IGBEWVJETPPOEEEMNWM.jpg" alt="aug222024" class="fig-img" data-step="11">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/ZDSGAKPCBRDJBHGAQDRT3RQ7II.jpg" alt="aug222024" class="fig-img" data-step="11">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/K5OGTLYLDBHQ7CPCE47S6CWSDY.jpg" alt="aug222024" class="fig-img" data-step="11">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/5M5GGPKTOVHEVBY5AE446KEVL4.png" alt="oct312024" class="fig-img" data-step="12">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/ABHQGX36LFC4NKUI224UWM4HKQ.jpg" alt="oct312024" class="fig-img" data-step="12">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/NXQCEWWJMFBYTCO7GU27TL64N4.jpg" alt="oct312024" class="fig-img" data-step="12">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/7QGTNJIRRZBJ5JVHK6HNZVVRWY.jpg" alt="nov52024" class="fig-img" data-step="13" data-credit="Courtesy of Gage Skidmore">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/CDG45OBGNRAGZPNLFNBGPBROV4.jpg" alt="dec182024" class="fig-img" data-step="14">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/ER5VDHLXEVEJDJDRBR3PXXTAKQ.jpg" alt="dec182024" class="fig-img" data-step="14">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/Y7BO7SGJEBBP7KV42DDUG647FI.jpg" alt="odec182024" class="fig-img" data-step="14">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/I5EG6KS66ZAMNDR3GBSS62KEB4.jpg" alt="jan202025" class="fig-img" data-step="15">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/SBPAXBADGRHTNG7QIDJKWIQPSA.jpg" alt="jan202025" class="fig-img" data-step="15">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/UGY7RVBG5BB6HICD5ZQKNOQKQQ.jpg" alt="jan202025" class="fig-img" data-step="15">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/T4HYCTOKGVC5FJYHW2KJCBJWHI.jpg" alt="mar72025" class="fig-img" data-step="16">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/BK6K2QWLQFGKZFC4UGDABBURBQ.jpg" alt="mar72025" class="fig-img" data-step="16">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/U64J2H4IANHKJBKEBDLH5ZYXCM.jpg" alt="mar72025" class="fig-img" data-step="16">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/JQNT2GBCQBCZ7NAW6ZQMJBTKRE.jpg" alt="mar82025" class="fig-img" data-step="17" data-credit="Stella Ragas / Photo Editor">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/XGWSW3AIY5BU3MGT5QEV6E7H4A.jpg" alt="mar132025" class="fig-img" data-step="18">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/EDBLZ5OJUNFKZISGW34QSNFNR4.jpg" alt="mar132025" class="fig-img" data-step="18">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/LP7DZ6SF4ZAYRCNCX47ABDJ7XY.jpg" alt="mar212025" class="fig-img" data-step="19">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/Y5DT27CZWBGMNB7HSGORXSI2AE.jpg" alt="mar212025" class="fig-img" data-step="19">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/QX3N3LWHJ5HMJGWC7WJ4BOHOEM.jpg" alt="mar212025" class="fig-img" data-step="19">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/SKT7C6HQGVHQXJNRNXZ2PKDGDU.jpg" alt="mar212025" class="fig-img" data-step="19">
+
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/TZU4BN7IYRBRPBNKKEHYZBUJBY.jpg" alt="mar282025" class="fig-img" data-step="20" data-credit="Gabriella Gregor Splaver / Senior Staff Photographer">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/RNJ6PDGFLNBALBH74PVQJENOGQ.JPEG" alt="april142025" class="fig-img" data-step="21" data-credit="Gabriella Gregor Splaver / Senior Staff Photographer">
+
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/N5TNEXBHXNGIJB4WA67DS5N5XE.jpg" alt="may222025" class="fig-img" data-step="22">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/Q25HL3H3DBHXNBOLJPNHRUI6XM.jpg" alt="may222025" class="fig-img" data-step="22">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/EIRLLFR77VE6LAK3F2BLGDYR5M.jpg" alt="may222025" class="fig-img" data-step="22">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/OYKK6ZNJ6BFVDMRZO2TLYCLDHU.jpg" alt="june42025" class="fig-img" data-step="23">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/YKRE4JHJANGU3GSQEJVKH5BDDA.jpg" alt="june42025" class="fig-img" data-step="23">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/KYI6U4GETVCG3GMM47SSFVFHOM.jpg" alt="july232025" class="fig-img" data-step="24">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/6CL47M76GBBWNOKNBA7LDQKX3Q.jpg" alt="nov42025" class="fig-img" data-step="25">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/BQ2EV34GKNFCTCCNKJBMTNU324.jpg" alt="nov42025" class="fig-img" data-step="25">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/DWQWY5C7V5G3JC3DNDCSMB2224.jpg" alt="nov42025" class="fig-img" data-step="25">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/HWKKBD65QVGF7NTOGQU5VZOCTU.jpg" alt="nov42025" class="fig-img" data-step="25">
+
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/PNIF4XS7AVBS3EMWJSGCI75EWU.jpg" alt="jan142026" class="fig-img" data-step="26">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/WCUKBDISNFESZHFWATC5RCEH3E.jpg" alt="jan142026" class="fig-img" data-step="26">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/7R4GZGO7SNHANMNHM536NGJ6ZY.jpg" alt="jan142026" class="fig-img" data-step="26">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/HZOMHUUSAFF3BHEDJS35VXOZZE.jpg" alt="jan142026" class="fig-img" data-step="26">
+
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/R7PZJEBIJJET5IS44SUCEIFKDE.jpg" alt="jan222026" class="fig-img" data-step="27">
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/GVUQCUAOXNAI5OCAIFGXFSHZMY.jpg" alt="jan222026" class="fig-img" data-step="27">
+  				
+  				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/3AD36EEVDRE7LEKDNVMBMKLPP4.jpg" alt="feb262026" class="fig-img" data-step="28" data-credit="Zohar Ford / Senior Staff Photographer">
+  				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/NR2BNBBTPRDTBPRFTTMNHGGW5E.jpg" alt="mar242026" class="fig-img" data-step="29">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/45YQRWR3O5CG3JHSJT2Y7D7DCY.jpg" alt="mar242026" class="fig-img" data-step="29">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/BFXTIERY45H47MJ4RVPUOFLT6U.jpg" alt="mar242026" class="fig-img" data-step="29">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/6NUKZUJWOFHJPFZWAGBNJVXWM4.jpg" alt="mar242026" class="fig-img" data-step="29">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/MLPRO7C5UBD6BPPA5BGTFNGOYY.jpg" alt="mar242026" class="fig-img" data-step="29">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/H3DTFEV3YJDYNGCSXDIHQRN4JM.jpg" alt="mar242026" class="fig-img" data-step="29">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/ZFLVWXOH5VAYFLNQQHOTTRJY7U.jpg" alt="mar242026" class="fig-img" data-step="29">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/UXG2ZXIZ3ZGTHH4LUVKCLIFSFQ.jpg" alt="mar242026" class="fig-img" data-step="29">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/H6A25YIVK5DZPAIJC4DZBTCP4M.jpg" alt="mar242026" class="fig-img" data-step="29">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/PG6MQ67NN5DBNCIPWEJVJMDD7Q.jpg" alt="april12026" class="fig-img" data-step="30">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/AOYBWGU6WRGQ5FR5MELVQHZ5LA.jpg" alt="april12026" class="fig-img" data-step="30">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/WRQUIT3NTBHAHKIMJ4KLEQNQ3Q.jpg" alt="april12026" class="fig-img" data-step="30">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/4LD2LOWK2JD57GEXC2NG75ZEYM.jpg" alt="oct12026" class="fig-img" data-step="31">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/OAFSAQURN5ARLDDNG7YQCVKGDE.jpg" alt="oct12026" class="fig-img" data-step="31">
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/GOML7S44PJGMHJF3GNWML3EKPA.jpg" alt="oct12026" class="fig-img" data-step="31">
+				
+				<img src="https://cloudfront-us-east-1.images.arcpublishing.com/spectator/I5AQ76OBTZAPRLTXCUDVVAWFXA.jpeg" alt="nov32026" class="fig-img" data-step="32" data-credit="Joseph Zuloaga / Deputy University News Editor">
+
+				<figcaption class="fig-credit"></figcaption>
+				<button class="fig-arrow prev" aria-label="Previous image">&#8249;</button>
+    			<button class="fig-arrow next" aria-label="Next image">&#8250;</button>
+    			<div class="fig-count"></div>
+			</figure>
+		</section>
+
+		<section id="outro"></section>
+	</main>
+
+<script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+<script src="https://unpkg.com/scrollama"></script>
+<script>
+	// using d3 for convenience
+	var main = d3.select("main");
+	var scrolly = main.select("#scrolly");
+	var figure = scrolly.select("figure");
+	var article = scrolly.select("article");
+	var step = article.selectAll(".step");
+
+	var scroller = scrollama();
+
+	var redStart = 12; // 10 steps -> index 5 onward
+
+	var phoneQuery = window.matchMedia("(max-width: 600px)");
+
+function positionFigure() {
+    var header = document.getElementById("masthead");
+    var headerBottom = Math.max(header.getBoundingClientRect().bottom, 0);
+    var gap = phoneQuery.matches ? 8 : 16;
+    var top = headerBottom + gap;
+    var h = phoneQuery.matches
+        ? Math.round(window.innerHeight * 0.38)    /* must match the 38vh in the CSS */
+        : window.innerHeight - top - gap;
+
+    figure
+        .style("top", top + "px")
+        .style("transform", "none")
+        .style("margin-top", "0px")
+        .style("margin-bottom", "0px")
+        .style("height", Math.max(h, 100) + "px");
+}
+	
+	function handleResize() {
+    	step.style("height", "auto");
+    	positionFigure();
+    	scroller.offset(phoneQuery.matches ? 0.7 : 0.33);
+    	scroller.resize();
+	}
+
+	function scalePage() {
+		var wrapper = document.getElementById("scale-wrapper");
+		if (!wrapper) return; // no wrapper in the HTML, so skip scaling
+		var scale = window.innerWidth / 1200;
+		document.documentElement.style.setProperty("--page-scale", scale);
+		wrapper.style.transform = "scale(" + scale + ")";
+		wrapper.style.height = "calc(" + scale + " * 100%)";
+	}
+
+	var currentStep = 1;
+var slideIndex = {};   // remembers which image you were on for each step
+
+function imagesForStep(stepNum) {
+    return figure.selectAll("img").nodes().filter(function (img) {
+        return +img.getAttribute("data-step") === stepNum;
+    });
+}
+
+function updateImages() {
+    var all = figure.selectAll("img").nodes();
+    var group = imagesForStep(currentStep);
+    var idx = slideIndex[currentStep] || 0;
+
+    all.forEach(function (img) { img.classList.remove("active"); });
+    if (group[idx]) group[idx].classList.add("active");
+	var credit = (group[idx] && group[idx].getAttribute("data-credit")) || "";
+	figure.select(".fig-credit")
+    	.text(credit)
+    	.style("display", credit ? "block" : "none");
+
+    var multi = group.length > 1;
+    figure.selectAll(".fig-arrow").style("display", multi ? "flex" : "none");
+    figure.select(".fig-count")
+        .style("display", multi ? "block" : "none")
+        .text(multi ? (idx + 1) + " / " + group.length : "");
+}
+
+function changeSlide(dir) {
+    var n = imagesForStep(currentStep).length;
+    if (n < 2) return;
+    slideIndex[currentStep] = ((slideIndex[currentStep] || 0) + dir + n) % n;
+    updateImages();
+}
+
+function handleStepEnter(response) {
+    step.classed("is-active", function (d, i) {
+        return i === response.index;
+    });
+
+    step.classed("is-red", function (d, i) {
+        return i >= redStart;
+    });
+
+    currentStep = response.index + 1;
+    updateImages();
+}
+
+
+	function init() {
+    	handleResize();
+    	scroller
+        	.setup({
+            	step: "#scrolly article .step",
+            	offset: phoneQuery.matches ? 0.7 : 0.33,
+            	debug: false
+        	})
+        	.onStepEnter(handleStepEnter);
+			figure.select(".fig-arrow.prev").on("click", function () { changeSlide(-1); });
+			figure.select(".fig-arrow.next").on("click", function () { changeSlide(1); });
+			handleStepEnter({ index: 0 }); // highlight step 1 on load
+	}
+
+	window.addEventListener("resize", function () { scalePage(); handleResize(); });
+	window.addEventListener("load", scalePage);
+	window.addEventListener("scroll", positionFigure)
+
+	init();
+</script>
+
+
+
+</body>
+
+</html>

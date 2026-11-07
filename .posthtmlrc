@@ -7,12 +7,277 @@
       "root": "./src/partials",
       "locals": {
         "top": [],
-        "body": [],
+        "body": [
+          {
+            "type": "text",
+            "value": "On Tuesday, after two years of President Donald Trump controlling the levers of power in Washington, Democrats rode a blue wave back to power on Capitol Hill, winning back both the Senate and the House of Representatives."
+          },
+          {
+            "type": "text",
+            "value": "Voters capped off a bruising midterm election cycle by delivering a sharp rebuke of the Trump agenda, one which included efforts to scrutinize universities like Columbia."
+          },
+          {
+            "type": "text",
+            "value": "A <a href=\"https://www.columbiaspectator.com/news/2025/03/07/trump-administration-cuts-400-million-in-federal-funding-to-columbia/\">$400 million</a> federal funding cut, a <a href=\"https://www.columbiaspectator.com/news/2025/07/23/columbia-will-pay-220-million-in-deal-with-trump-administration-to-resume-federal-funding/\">$221 million</a> settlement, and a <a href=\"https://www.columbiaspectator.com/news/2024/10/10/as-columbia-rebuilds-congressional-scrutiny-persists/\">litany</a> of congressional investigations have characterized the last two years of Columbia’s relationship with the federal government in the Trump era. These efforts garnered fierce blowback from the Columbia community, in Morningside Heights and beyond, and now that energy has been channeled into two history-making races."
+          },
+          {
+            "type": "text",
+            "value": "<i>[Read more:</i><a href=\"https://www.columbiaspectator.com/news/2026/01/20/night-and-day-how-one-year-of-donald-trumps-second-term-upended-columbias-relationship-with-the-federal-government/\"><i> </i></a><a href=\"https://www.columbiaspectator.com/news/2026/01/20/night-and-day-how-one-year-of-donald-trumps-second-term-upended-columbias-relationship-with-the-federal-government/\"><i>‘Night and day’: How one year of Donald Trump’s second term upended Columbia’s relationship with the federal government</i></a><i>]</i>"
+          },
+          {
+            "type": "text",
+            "value": "In Harlem, Darializa Avila Chevalier, CC ’16, <a href=\"https://www.columbiaspectator.com/city-news/2026/11/03/darializa-avila-chevalier-cc-16-gaza-solidarity-encampment-organizer-to-represent-columbia-in-congress/\">won</a> her race to represent New York’s 13th Congressional District—which includes Columbia—in the House, capping off a contest that saw her dethrone five-term incumbent Rep. Adriano Espaillat (D-N.Y.). An organizer of the April 2024 “<a href=\"https://www.columbiaspectator.com/news/2024/05/02/timeline-the-gaza-solidarity-encampment/\">Gaza Solidarity Encampment,”</a> she has criticized federal actions aimed at the University, including the <a href=\"https://www.columbiaspectator.com/news/2025/03/09/palestinian-activist-mahmoud-khalil-sipa-24-detained-by-immigration-and-customs-enforcement-lawyer-says/\">detainment</a> of Mahmoud Khalil, SIPA ’24, throughout her campaign."
+          },
+          {
+            "type": "text",
+            "value": "Similarly, Abdul El-Sayed, VP&S ’14, who won the marquee Senate race in battleground Michigan and will become the country’s first Muslim senator, expressed his disapproval of the July 2025 settlement in an October <a href=\"https://www.columbiaspectator.com/news/2026/10/21/how-columbia-helped-abdul-el-sayed-vps-14-turn-health-equity-into-a-political-mission/\">interview</a> with Spectator."
+          },
+          {
+            "type": "text",
+            "value": "“The deal was such a disaster on two terms,” El-Sayed said. “Number one, watching the federal government bully an institution of higher learning, quite contrary to the free speech rights that the institution had, and then watching the institution take it rather than fight back.”"
+          },
+          {
+            "type": "text",
+            "value": "The victories by El-Sayed and Avila Chevalier punctuated a successful night for Democrats, as the party made inroads in Republican states. They flipped several GOP-held seats in the Senate and are on track to obtain a sizable majority in the House, thereby ending the Republican <a href=\"https://www.columbiaspectator.com/news/2024/11/13/columbia-hoped-to-keep-heads-down-a-republican-trifecta-could-intensify-federal-scrutiny/\">trifecta</a> in the federal government."
+          },
+          {
+            "type": "text",
+            "value": "Come January, when the new Congress is sworn in, Democrats will have at their disposal a degree of power they have not enjoyed in either of the two Trump presidencies. The party will control key congressional committees and with them, investigatory purview over the Trump administration’s aggressive efforts to modify how <a href=\"https://www.columbiaspectator.com/news/2026/08/18/sweeping-omb-proposal-to-overhaul-federal-grant-allocation-process-sparks-pushback-from-columbia-us-senate/\">federal funding</a> is disbursed to universities, accreditation, <a href=\"https://www.columbiaspectator.com/news/2026/09/15/judge-temporarily-blocks-contentious-dhs-rule-capping-student-visas-at-four-years/\">foreign enrollment</a>, and more."
+          },
+          {
+            "type": "text",
+            "value": "As the political world heads into the new year, the Columbia community is keeping its eye on how Democrats craft their response to Trump’s higher education agenda—one that some see has led to a <a href=\"https://www.columbiaspectator.com/news/2025/09/11/it-is-a-shakedown-columbia-penn-brown-settle-with-government-as-peer-ivy-league-institutions-remain-in-crosshairs/\">“shakedown”</a> of the University."
+          },
+          {
+            "type": "text",
+            "value": "<b>An erosion of checks and balances</b>"
+          },
+          {
+            "type": "text",
+            "value": "Ever since returning to the White House in 2025, Trump has relied on executive power to consolidate decision-making to the Oval Office, which has come at the expense of Capitol Hill."
+          },
+          {
+            "type": "text",
+            "value": "“Congress, under Republican Mike Johnson’s leadership, has basically been the lapdog of Donald Trump and it’s gone along with whatever he wants,” Robert Shapiro, professor of government and vice dean at the School of International and Public Affairs, told Spectator."
+          },
+          {
+            "type": "text",
+            "value": "House Speaker Johnson (R-La.) <a href=\"https://www.columbiaspectator.com/news/2024/04/24/mike-johnson-foxx-call-for-shafiks-resignation-in-press-conference-on-low-steps/\">visited</a> Columbia along with four of his fellow Republicans in April 2024 during the height of the encampment, a visible marker of what would become significant federal oversight of the University."
+          },
+          {
+            "type": "image",
+            "value": {
+              "width": "50%",
+              "asset": "https://cloudfront-us-east-1.images.arcpublishing.com/spectator/JDTUFSLKYVAT3BZEBRMNAE7Q3A.jpg",
+              "caption": "Over the past two years, the Louisiana Republican has positioned himself as a fierce Trump ally on Capitol Hill. Following their midterm defeat, Johnson announced on Wednesday he would not run to lead House Republicans in the next Congress.",
+              "credit": "Courtesy of The White House"
+            }
+          },
+          {
+            "type": "text",
+            "value": "Page Fortna, professor of political science and president of the Columbia chapter of the American Association of University Professors, said Trump’s actions have not been surprising: “a would-be autocrat would try to weaken the control of Congress.”"
+          },
+          {
+            "type": "text",
+            "value": "This ceding of power by the House, coupled with the Senate, allowed for Trump to utilize federal agencies to rewrite the framework that governs universities."
+          },
+          {
+            "type": "text",
+            "value": "“He hasn’t really done this through legislating,” Lincoln Mitchell, GSAS ’96, political analyst and SIPA lecturer, told Spectator about Trump’s actions on higher education. “The problem or the advantage he has because he has the Congress is that there’s been no oversight, no investigation.”"
+          },
+          {
+            "type": "text",
+            "value": "<b>Beltway conversations</b>"
+          },
+          {
+            "type": "text",
+            "value": "The Trump administration’s efforts to reel in academia closer to Washington’s orbit has laid bare the faultlines between both branches."
+          },
+          {
+            "type": "text",
+            "value": "Shortly after the $400 million funding cut, Giulia Zanni, assistant professor of psychiatry and a member of Columbia-AAUP’s advocacy committee, said she began speaking to lawmakers about the consequences of Trump’s actions towards universities, arguing for a more assertive response from Capitol Hill."
+          },
+          {
+            "type": "text",
+            "value": "Since then, after speaking with Reps. Jerry Nadler, CC ’69 (D-N.Y.), Mike Lawler (R-N.Y.), Nicole Malliotakis (R-N.Y.), Sen. Chuck Schumer (D-N.Y.), and then-Democratic New York House candidates Cait Conley and Avilia Chevalier, Zanni said academia has begun to be viewed more sympathetically within the halls of Congress."
+          },
+          {
+            "type": "text",
+            "value": "<i>[Read more:</i><a href=\"https://www.columbiaspectator.com/news/2025/12/04/amid-proposed-federal-research-funding-cuts-columbia-affiliates-intensify-advocacy-efforts-in-washington/\"><i> </i></a><a href=\"https://www.columbiaspectator.com/news/2025/12/04/amid-proposed-federal-research-funding-cuts-columbia-affiliates-intensify-advocacy-efforts-in-washington/\"><i>Amid proposed federal research funding cuts, Columbia affiliates intensify advocacy efforts in Washington</i></a><i>]</i>"
+          },
+          {
+            "type": "text",
+            "value": "“There’s bipartisan agreement to support research and support higher education in particular,” Zanni said."
+          },
+          {
+            "type": "image",
+            "value": {
+              "width": "50%",
+              "asset": "https://cloudfront-us-east-1.images.arcpublishing.com/spectator/ZMCJTPCCHRBU3ENBYWIV6D7KHU.png",
+              "caption": "Zanni said that her conversations with six New York politicians contextualized the state of play when it comes to higher education policy on Capitol Hill.",
+              "credit": "Courtesy of U.S. House Office of Photography, U.S. House of Representatives, House Creative Committee, U.S. Senate Photographic Studio/Jeff McEvoy, Cybersecurity and Infrastructure Security Agency, Eliza Lamster"
+            }
+          },
+          {
+            "type": "text",
+            "value": "Mimi Shirasu-Hiza, professor of genetics and development and Zanni’s colleague on the Columbia-AAUP’s advocacy committee, said that after attending a 2024 biomedical rally in Washington, D.C., she realized universities are the underdogs when it comes to fighting for funding in the Trump era."
+          },
+          {
+            "type": "text",
+            "value": "“My take from that was essentially scientists and academics are way behind on the lobbying front,” Shirasu-Hiza wrote in a statement to Spectator. Because there are hundreds of people “greeting and socializing with Congress” for lobbying purposes, she wrote, “there is no way for us to compete with the auto industry or oil industry lobbyists.”"
+          },
+          {
+            "type": "text",
+            "value": "Over the past three quarters of 2026, Columbia has<a href=\"https://www.columbiaspectator.com/news/2026/10/27/columbia-spends-200000-on-lobbying-in-third-quarter-pushes-against-h-1b-fees-student-loan-caps/\"> </a><a href=\"https://www.columbiaspectator.com/news/2026/10/27/columbia-spends-200000-on-lobbying-in-third-quarter-pushes-against-h-1b-fees-student-loan-caps/\">spent</a> more than $600,000 in lobbying efforts focused on supporting research funding, and arguing against H1-B visa fees and graduate student loan caps."
+          },
+          {
+            "type": "text",
+            "value": "Shirasu-Hiza believes the University should not be placed in a position where it finds itself lobbying for crucial facets of its enterprise."
+          },
+          {
+            "type": "text",
+            "value": "“This is why we have the NIH!,” she wrote. “We shouldn’t have to lobby Congress to give us funds that they’ve already budgeted. Because health and research and science is a national mission. Universities are just as important to the nation as the military.”"
+          },
+          {
+            "type": "text",
+            "value": "In September, the White House briefly<a href=\"https://www.columbiaspectator.com/news/2026/09/21/proposed-trump-order-to-tighten-nih-grant-control-poses-possible-funding-threat-to-columbia/\"> </a><a href=\"https://www.columbiaspectator.com/news/2026/09/21/proposed-trump-order-to-tighten-nih-grant-control-poses-possible-funding-threat-to-columbia/\">attempted</a> to reel in funding from the National Institutes of Health under its control. That order was part of a barrage of<a href=\"https://www.columbiaspectator.com/news/2026/10/13/columbia-navigates-chaos-as-trump-ramps-up-higher-education-orders-before-midterms/\"> </a><a href=\"https://www.columbiaspectator.com/news/2026/10/13/columbia-navigates-chaos-as-trump-ramps-up-higher-education-orders-before-midterms/\">higher education directives</a> the Trump administration issued in the final weeks before the midterms."
+          },
+          {
+            "type": "text",
+            "value": "From her conversations with Democratic operatives, Zanni gleaned that the party has tried to push back against Trump for the past two years, but it has struggled to accumulate the necessary political capital to mount formidable resistance."
+          },
+          {
+            "type": "text",
+            "value": "Democrats were thinking of holding the GOP “accountable, holding public hearings, and try to really go after and try to ask for more accountability for everything that was happening,” she said. “But there’s been so many things and so many attacks from all over the spectrum that it has been difficult to really counter these attacks and focus on one at a time.”"
+          },
+          {
+            "type": "text",
+            "value": "<b>Columbia’s Capitol Hill woes</b>"
+          },
+          {
+            "type": "text",
+            "value": "Since October 2023, at least eight House and Senate committees have investigated Columbia."
+          },
+          {
+            "type": "text",
+            "value": "Congressional power was notably on display in April 2024, when Republicans on the House Committee on Education and the Workforce<a href=\"https://www.columbiaspectator.com/news/2024/04/21/columbia-in-crisis-shafik-testifies-before-congress-about-antisemitism-at-columbia/\"> </a><a href=\"https://www.columbiaspectator.com/news/2024/04/21/columbia-in-crisis-shafik-testifies-before-congress-about-antisemitism-at-columbia/\">grilled</a> then-University President Minouche Shafik and other top Columbia officials on the University’s response to on-campus antisemitism."
+          },
+          {
+            "type": "text",
+            "value": "When the new Congress begins in two months, Democrats will regain the gavel of these committees that have wielded investigatory power over Columbia."
+          },
+          {
+            "type": "text",
+            "value": "The breadth of the probes so far have been expansive, ranging from ones into<a href=\"https://www.columbiaspectator.com/news/2026/03/26/house-committee-on-energy-and-commerce-announces-antidiscrimination-investigation-into-columbia/\"> </a><a href=\"https://www.columbiaspectator.com/news/2026/03/26/house-committee-on-energy-and-commerce-announces-antidiscrimination-investigation-into-columbia/\">antidiscrimination</a> at the University, its ties with convicted sex offender<a href=\"https://www.columbiaspectator.com/news/2026/01/14/house-judiciary-committee-letter-reveals-jeffrey-epstein-paid-for-survivors-tuition-at-columbia-to-ensure-their-silence/\"> </a><a href=\"https://www.columbiaspectator.com/news/2026/01/14/house-judiciary-committee-letter-reveals-jeffrey-epstein-paid-for-survivors-tuition-at-columbia-to-ensure-their-silence/\">Jeffrey Epstein</a> and the<a href=\"https://www.columbiaspectator.com/news/2025/11/13/house-committee-on-the-chinese-communist-party-calls-on-columbia-to-discontinue-exchange-programs-tied-to-the-ccp/\"> </a><a href=\"https://www.columbiaspectator.com/news/2025/11/13/house-committee-on-the-chinese-communist-party-calls-on-columbia-to-discontinue-exchange-programs-tied-to-the-ccp/\">Chinese Communist Party</a>, to inquiries about the<a href=\"https://www.columbiaspectator.com/news/2026/02/05/sen-bill-cassidy-r-la-requests-records-of-columbia-first-year-math-course-placements-in-letter-to-shipman/\"> </a><a href=\"https://www.columbiaspectator.com/news/2026/02/05/sen-bill-cassidy-r-la-requests-records-of-columbia-first-year-math-course-placements-in-letter-to-shipman/\">math placement scores</a> of Columbia’s first-year students."
+          },
+          {
+            "type": "text",
+            "value": "Rep. Jamie Raskin (D-Md.), Sens. Bill Cassidy (R-La.), Dick Durbin (D-Ill.), and Peter Welch (D-Vt.), and the House Committees on Energy and Commerce and Education and the Workforce have been power players in either scrutinizing Columbia or critical of the GOP’s oversight of the University. They did not respond to Spectator’s multiple requests for comment for their assessments of federal scrutiny on Columbia as well as their hopes for the next Congress."
+          },
+          {
+            "type": "graphic",
+            "value": {
+              "asset": "fedscrutiny.html"
+            }
+          },
+          {
+            "type": "text",
+            "value": "Shapiro argued that congressional oversight will not be a permanent shadow over Columbia."
+          },
+          {
+            "type": "text",
+            "value": "“In the short term, a lot of this kind of tarnished Columbia’s image and reputation,” he said. “But as time goes by, this stuff becomes a more distant memory.”"
+          },
+          {
+            "type": "text",
+            "value": "In August, as Congress continued to weather the storm of the White House’s unilateral actions, an opportunity for Capitol Hill to reassert its oversight power emerged."
+          },
+          {
+            "type": "text",
+            "value": "That month, a Justice Department whistleblower<a href=\"https://www.columbiaspectator.com/news/2026/08/19/trump-administration-infused-political-priorities-in-antisemitism-probe-into-columbia-doj-whistleblower-claims/\"> </a><a href=\"https://www.columbiaspectator.com/news/2026/08/19/trump-administration-infused-political-priorities-in-antisemitism-probe-into-columbia-doj-whistleblower-claims/\">revealed</a> the Trump administration infused political priorities in its antisemitism investigation into Columbia. Raskin seized on the account and requested that Harmeet Dhillon, the Department of Justice’s assistant attorney general for civil rights, schedule a transcribed interview by Sept. 1 and provide relevant records."
+          },
+          {
+            "type": "text",
+            "value": "It is unclear whether Dhillon abided by the deadline. With Raskin poised to retake the gavel of the powerful House Judiciary Committee come 2027, it is also an open question of where Trump’s campaign against universities will rank on Raskin’s priority list for investigations into the Trump agenda."
+          },
+          {
+            "type": "text",
+            "value": "<b>The road to 2028</b>"
+          },
+          {
+            "type": "text",
+            "value": "With Democrats en route to return to power following Tuesday’s elections, the direction of the final two years of the Trump presidency has been set."
+          },
+          {
+            "type": "text",
+            "value": "Their victory opens the door for “some scrutiny of the scrutiny” of the past two years of oversight, Fortna said, which includes “scrutiny of the settlements that have been reached and the ways in which higher ed has been pressured into policies in line with the Trump administration.”"
+          },
+          {
+            "type": "text",
+            "value": "She did, however, recognize the realities of the current moment."
+          },
+          {
+            "type": "text",
+            "value": "“I don’t fool myself into thinking that every Democratic congressperson wakes up thinking about the fate of Columbia University,” Fortna said. “There are a lot of issues, there are a lot of things that the Trump administration has done that has been unlawful, so there’s a lot to investigate.”"
+          },
+          {
+            "type": "image",
+            "value": {
+              "width": "50%",
+              "asset": "https://cloudfront-us-east-1.images.arcpublishing.com/spectator/M2LDONKWJJAM3IMFRHGBGYB3MU.jpg",
+              "caption": "As Trump becomes a lame-duck president, the question of who will pick up the conservative vision for higher education remains open.",
+              "credit": "Courtesy of Liam Enea"
+            }
+          },
+          {
+            "type": "text",
+            "value": "When the 120th Congress kicks off in the new year, Democrats will be tasked with resurrecting Capitol Hill’s role as a check on the White House, including its push to reform universities."
+          },
+          {
+            "type": "text",
+            "value": "Zanni believes the party should deploy a “dual strategy” that does not heavily focus on investigations, as she believes Democrats “could spend time in a much better way.”"
+          },
+          {
+            "type": "text",
+            "value": "She said she discussed the importance of passing legislation with Avilia Chevalier and Conley while also “having accountability for what has been done and what has been lost.”"
+          },
+          {
+            "type": "text",
+            "value": "Tuesday’s results have also set the stage for the 2028 presidential election, a year where both Trump and his biggest imprint on the University, the deal, will sunset. Many more<a href=\"https://www.columbiaspectator.com/news/2026/10/05/in-second-report-on-trump-deal-compliance-columbia-touts-new-all-student-title-vi-training-efforts-to-diversify-faculty/\"> </a><a href=\"https://www.columbiaspectator.com/news/2026/10/05/in-second-report-on-trump-deal-compliance-columbia-touts-new-all-student-title-vi-training-efforts-to-diversify-faculty/\">semi-annual reports</a> are on the way, which chronicle how the University complies with core facets of Trump’s higher education agenda."
+          },
+          {
+            "type": "text",
+            "value": "For Shirasu-Hiza, turning the page on this era of scrutiny of academia will not come quickly."
+          },
+          {
+            "type": "text",
+            "value": "“We are still dealing with the repercussions,” Shirasu-Hiza wrote, reflecting a year and a half after Trump targeted the University. “Destruction is fast and easy. Rebuilding will be slow and difficult.”"
+          },
+          {
+            "type": "text",
+            "value": "<i>Deputy News Editor Joseph Zuloaga can be contacted at </i><a href=\"mailto:joseph.zuloaga@columbiaspectator.com\"><i>joseph.zuloaga@columbiaspectator.com</i></a><i>. Follow him on X</i><a href=\"https://twitter.com/JosephZuloaga\"><i> </i></a><a href=\"https://twitter.com/JosephZuloaga\"><i>@josephzuloaga</i></a><i>.</i>"
+          },
+          {
+            "type": "text",
+            "value": "<i>Deputy Data Visualization Editor Emilia Lebeau can be contacted at </i><a href=\"mailto:emilia.lebeau@columbiaspectator.com\"><i>emilia.lebeau@columbiaspectator.com</i></a><i>. </i><i>Follow Spectator on X </i><a href=\"https://twitter.com/columbiaspec?lang=en\"><i>@ColumbiaSpec</i></a><i>.</i>"
+          },
+          {
+            "type": "text",
+            "value": "<b><i>Want to keep up with breaking news? Subscribe to our </i></b><a href=\"https://columbiaspectator.us4.list-manage.com/subscribe?u=a3d2eeb1ae5560ca04f82f042&id=e51c51d62d\"><b><i>email newsletter </i></b></a><b><i>and like Spectator on </i></b><a href=\"https://www.facebook.com/columbiaspectator\"><b><i>Facebook</i></b></a><b><i>. </i></b>"
+          }
+        ],
+        "headline": "Future of Washington’s scrutiny of Columbia hangs in balance as Democrats retake control of Congress",
+        "dek": "Congressional oversight on the University has become a fixture in recent years. The results from Tuesday’s midterms leave what comes next up in the air.",
+        "date": "November 4, 2026",
+        "byline": "By <a href=\"https://www.columbiaspectator.com/contributors/joseph-zuloaga/\">Joseph Zuloaga</a>",
+        "byline2": "Graphic by <a href=\"https://www.columbiaspectator.com/contributors/emilia-lebeau/\">Emilia Lebeau</a>",
+        "cover_asset": "https://cloudfront-us-east-1.images.arcpublishing.com/spectator/TRLEZIO7FRAM3JKZVAIKVCMRSM.png",
+        "cover_caption": "Saumya Chaudhry / Illustrations Editor",
         "USE_NEWS_NAV": true,
         "USE_EYE_NAV": false,
-        "USE_COVER_HED": false,
+        "USE_COVER_HED": true,
         "IS_EMBED": false,
-        "DOC_URL": null
+        "DOC_URL": "https://docs.google.com/document/d/1k6GaxHWGgzhpjI8UaN-ntV_UZrKj2eiM8cKGhY7YrV8/edit?usp=sharing"
       }
     }
   }
